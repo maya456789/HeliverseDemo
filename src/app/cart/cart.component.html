@@ -1,0 +1,14 @@
+
+
+
+
+<h3 class="text-center">Cart</h3>
+
+<div class="cart-item text-center" *ngFor="let item of items">
+  <span>Name :{{ item.first_name }}&nbsp;{{ item.last_name }}</span>
+
+  <h4>Domain:{{ item.domain }}</h4>
+</div><br>
+<div class="text-center">
+<button class="btn btn-primary " (click)="onClear()">Clear cart</button>
+</div>

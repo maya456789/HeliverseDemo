@@ -1,0 +1,42 @@
+
+
+<section class="text-center container">
+  <div class="row py-lg-3">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Welcome !</h1>
+      <p class="lead text-body-secondary">You are few click away to add best team.</p>
+
+    </div>
+  </div>
+</section>
+
+<div class="container">
+   <div class="row">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
+   </div>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3  g-3">
+
+<mat-card class="example-card mr-2" *ngFor="let card of obs | async ">
+  <mat-card-header>
+    <div mat-card-avatar >
+      <img [src]="card.avatar" width="100%" alt="">
+    </div>
+    <mat-card-title>{{card.first_name}}</mat-card-title>
+    <mat-card-subtitle>{{card.last_name}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="text-center">
+    <span class="badge text-bg-warning rounded-pill  " >Availability:{{card.available}}</span>
+    <span class="badge text-bg-danger move rounded-pill">Domain:{{card.domain}}<br>Gender:{{card.gender}} </span>
+  </mat-card-content>
+  <mat-card-actions class="d-flex justify-content-center">
+
+    <button  [disabled]='!card.available' class="btn btn-success mt-auto align-self-center " (click)="addToCart(card)">Add To Team</button>
+  </mat-card-actions>
+</mat-card>
+
+  </div>
+</div>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
